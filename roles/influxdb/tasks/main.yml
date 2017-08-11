@@ -1,0 +1,11 @@
+- name: be sure influxdb is installed with a specific version
+  yum: name=influxdb-1.3.2-1 state=present
+  tags: influxdb
+
+- name: be sure influxdb is configured
+  template: src=influxdb.conf.j2 dest=/etc/influxdb/influxdb.conf
+  tags: influxdb
+
+- name: be sure influxdb is running and enabled
+  service: name=influxdb state=started enabled=yes
+  tags: influxdb
