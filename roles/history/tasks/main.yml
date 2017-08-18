@@ -1,0 +1,11 @@
+- name: be sure profile is configured
+  template: src=profile.d/history.sh.j2 dest=/etc/profile.d/history.sh
+
+- name: be sure rsyslog is installed
+  yum: name=rsyslog state=installed
+
+- name: be sure rsyslog is configured
+  template: src=rsyslog.d/history.conf.j2 dest=/etc/rsyslog.d/history.conf
+
+- name: be sure rsyslog is running and enabled
+  service: name=rsyslog state=started enabled=yes
