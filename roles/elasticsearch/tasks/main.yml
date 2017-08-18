@@ -1,11 +1,8 @@
 - name: be sure elasticsearch is installed with a specific version
   yum: name=elasticsearch-5.5.1-1 state=present
-  tags: elasticsearch
 
 - name: be sure elasticsearch is configured
   template: src=elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml
-  tags: elasticsearch
 
 - name: be sure elasticsearch is running and enabled
   service: name=elasticsearch state=started enabled=yes
-  tags: elasticsearch
